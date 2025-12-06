@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hai <3</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & BASICS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #050505;
+            color: #eeeeee;
+            font-family: 'Questrial', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Applies lowercase to everything by default */
+            text-transform: lowercase; 
+        }
+
+        /* --- SNOW ANIMATION --- */
+        .snow, .snow:after, .snow:before {
+            content: "";
+            position: absolute;
+            top: -650px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(4px 4px at 100px 50px, #fff, transparent),
+                radial-gradient(6px 6px at 200px 150px, #fff, transparent),
+                radial-gradient(3px 3px at 300px 250px, #fff, transparent),
+                radial-gradient(4px 4px at 400px 350px, #fff, transparent),
+                radial-gradient(6px 6px at 500px 100px, #fff, transparent),
+                radial-gradient(3px 3px at 600px 400px, #fff, transparent),
+                radial-gradient(4px 4px at 700px 200px, #fff, transparent),
+                radial-gradient(6px 6px at 800px 500px, #fff, transparent);
+            background-size: 650px 650px;
+            animation: snow 3s linear infinite;
+            z-index: 1;
+            opacity: 0.8;
+            pointer-events: none; /* Lets you click through snow */
+        }
+
+        .snow:after {
+            margin-left: -250px;
+            opacity: 0.5;
+            filter: blur(2px);
+            animation-duration: 6s;
+            animation-direction: reverse;
+        }
+
+        .snow:before {
+            margin-left: -350px;
+            opacity: 0.3;
+            filter: blur(1px);
+            animation-duration: 9s;
+        }
+
+        @keyframes snow {
+            from { transform: translateY(0); }
+            to { transform: translateY(650px); }
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            width: 100%;
+            padding: 2rem;
+            display: flex; /* Puts text and image side by side */
+            align-items: center;
+            justify-content: center;
+            gap: 50px; /* Space between text and cat */
+        }
+
+        .text-content {
+            flex: 1;
+            text-align: left; /* Aligns text to the left */
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        p {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* This allows the smiley to be uppercase */
+        .smiley {
+            text-transform: none; 
+            display: inline-block;
+        }
+
+        /* --- CAT IMAGE STYLING --- */
+        .cat-content {
+            flex: 0 0 auto;
+        }
+
+        .cat-img {
+            width: 280px; /* Slightly larger since it's on the side */
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            filter: grayscale(60%) contrast(110%) brightness(80%);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .cat-img:hover {
+            transform: translateY(-5px) scale(1.02);
+            filter: grayscale(0%) contrast(100%) brightness(100%);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse; /* Puts text on top, image below */
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .text-content {
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 4rem;
+            }
+
+            .cat-img {
+                width: 220px;
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="snow"></div>
+
+    <div class="container">
+        
+        <div class="text-content">
+            <h1>hai <3</h1>
+            <p>welcome to my site, this is usually held as a placeholder <span class="smiley">:D</span></p>
+        </div>
+
+        <div class="cat-content">
+            <!-- Black cat image -->
+            <img src="https://cdn.jsdelivr.net/gh/shayderrr/TheGameVault@main/d3bb61cbe01be54e5c3bbd58caf92224.jpg" alt="black cat" class="cat-img">
+        </div>
+
+    </div>
+
+</body>
+</html>
