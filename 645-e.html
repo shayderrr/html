@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-
-
-<!-- Ultimate Game Stash file--> 
-<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
-
-
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <base href="https://cdn.jsdelivr.net/gh/bubbls/ports@89abf1665a415434935039694dccc55678c0f2d2/arthurs-nightmare/">
+    <base href="https://cdn.jsdelivr.net/gh/bubbls/ports@main/arthurs-nightmare/">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Arthur's Nightmare</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico"> 
     <link rel="stylesheet" href="TemplateData/style.css">
     <script>
-// Global fetch interceptor - catches ALL requests
 (function() {
   const originalFetch = window.fetch;
   window.fetch = function(...args) {
@@ -41,7 +34,6 @@
     return originalOpen.call(this, method, url, ...rest);
   };
 
-  // Intercept video/audio element sources
   const originalCreateElement = document.createElement;
   document.createElement = function(tagName) {
     const element = originalCreateElement.call(document, tagName);
@@ -76,22 +68,6 @@
   };
 })();
 </script>
-    <script src="TemplateData/UnityProgress.js"></script>  
-    <script>
-    window.fileMergerConfig = {
-      files: [
-        { name: 'web.data.unityweb', parts: 2 },
-        { name: 'web.asm.code.unityweb', parts: 2 },
-      ],
-      basePath: 'Build/',
-      debug: true
-    };
-  </script>
-  <script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/merge.js" ></script>
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/web.json", {onProgress: UnityProgress});
-    </script>
   </head>
   <body>
     <div class="webgl-content">
@@ -108,5 +84,24 @@
         <div class="title">Arthur's Nightmare</div>
       </div>
     </div>
+
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script>
+      window.fileMergerConfig = {
+        files: [
+          { name: 'web.data.unityweb', parts: 2 },
+          { name: 'web.asm.code.unityweb', parts: 2 },
+        ],
+        basePath: 'Build/',
+        debug: true
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/merge.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      setTimeout(function() {
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/web.json", {onProgress: UnityProgress});
+      }, 1000);
+    </script>
   </body>
 </html>
